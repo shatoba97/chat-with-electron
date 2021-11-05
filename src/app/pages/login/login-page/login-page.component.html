@@ -1,0 +1,26 @@
+<form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="login-page">
+  <div class="login-inputs">
+    <img src="" alt="">
+    <div class="form-header">
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input color="primary" matInput formControlName="login" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput #hide formControlName="password" [type]="hide.type ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide.type = hide.type == 'password'? 'text': 'password'" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" fill>
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      
+    </div>
+    <div class="form-footer">
+      <button mat-raised-button color="primary" class="login" type="submit" [disabled]="!loginForm.valid && !loginForm.touched">login</button>
+      <a mat-button href="" class="forget-creds">Forget password or login</a>
+      <div class="login-with-social-networks"></div>
+    </div>
+  </div>
+</form>
