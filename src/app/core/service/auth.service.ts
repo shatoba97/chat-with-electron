@@ -18,8 +18,8 @@ export class AuthService {
   ) { }
 
   public auth(creds: LoginCredIO): Observable<User> {
-    const authHeader = new HttpHeaders();
-    authHeader.append("Authorization", "Basic " + btoa(`${creds.login}:${creds.password}`));
+    const authHeader = new HttpHeaders()
+      .set("Authorization", "Basic " + btoa(`${creds.login}:${creds.password}`));
 
     const httpOptions = {
       headers: authHeader
@@ -28,13 +28,13 @@ export class AuthService {
     return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
       tap(request => console.log(request)),
       switchMap(request => {
-        this.localStoreService.token$.next(request.token)
-        return this.getUser()
+        this.localStoreService.token$.next(request.token);
+        return this.getUser();
       })
     )
   }
 
   private getUser(): Observable<User> {
-    return this.httpClient.get('user')
+    return this.httpClient.get('user');
   }
 }

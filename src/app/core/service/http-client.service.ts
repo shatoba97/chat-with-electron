@@ -31,7 +31,7 @@ export class HttpClientBase {
 
   private mappingRequest<T>(): OperatorFunction<ResponseIO<T>, T> {
     return map((resp: ResponseIO<T>) => {
-      if(Object.keys(resp.error).length) {
+      if(resp.error && Object.keys(resp.error).length) {
         throw resp.error;
       }
 

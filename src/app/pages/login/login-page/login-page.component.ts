@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormBuilderTypeSafe, FormGroupTypeSafe } from 'angular-typesafe-reactive-forms-helper';
+import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { LoginCredIO } from './model/login-creds.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -29,7 +32,10 @@ export class LoginPageComponent implements OnInit {
     }
 
     const form = this.loginForm.value;
-    this.authService.auth(form).subscribe(res => console.log(res))
+    this.authService.auth(form).pipe(
+      take(1),
+      untilDestroyed(this),
+    ).subscribe(res => console.log(res))
   }
 
   /** */
