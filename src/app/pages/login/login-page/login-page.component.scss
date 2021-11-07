@@ -5,12 +5,27 @@
   width: 100%;
 }
 
-.login-inputs {
+.login-page {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+  .describtion {
+    width: 50%;
+  }
+
+  .login-inputs {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffffd9;
+    font-size: 20px;
+    color: black;
+  }
 }
+
 
 .form-header, .form-footer {
   display: flex;

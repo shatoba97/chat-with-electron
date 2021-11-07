@@ -1,7 +1,7 @@
-<div class="small-describtion">
-  <p class="describe-text"></p>
-</div>
 <form [formGroup]="loginForm" (submit)="submitLogin()" class="login-page">
+  <div class="describtion">
+    <p class="describe-text"></p>
+  </div>
   <div class="login-inputs">
     <img src="" alt="">
     <div class="form-header">
@@ -11,7 +11,7 @@
         <input color="primary" matInput formControlName="login" type="text">
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Enter your password</mat-label>
         <input matInput #hide formControlName="password" [type]="hide.type ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide.type = hide.type == 'password'? 'text': 'password'" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" fill>
