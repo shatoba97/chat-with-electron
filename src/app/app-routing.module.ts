@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageModuleModule } from './pages/login/login-page.module';
+import { AuthGuardService } from './core/guard/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,7 +10,12 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login-page.module').then(m => {console.log('eee', m); return m.LoginPageModuleModule})
+    loadChildren: () => import('./pages/login/login-page.module').then(m => m.LoginPageModuleModule)
+  },
+  {
+    path: 'chat',
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./pages/chat/chat.module').then(m => m.ChatModule)
   }
 ];
 
