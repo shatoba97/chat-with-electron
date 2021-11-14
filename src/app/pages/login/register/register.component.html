@@ -1,0 +1,30 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <mat-form-field class="first-name" appearance="fill">
+      <mat-label>Your first name</mat-label>
+      <input matInput formControlName="firstName" placeholder="First name">
+    </mat-form-field>
+    <mat-form-field class="last-name" appearance="fill">
+      <mat-label>Your last name</mat-label>
+      <input matInput formControlName="lastName" placeholder="Last name">
+    </mat-form-field>
+    <div>
+      <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+      <input hidden formControlName="icon" #fileInput type="file" id="file">
+    </div>
+    <mat-form-field class="nick-name" appearance="fill">
+      <mat-label>Your nick name</mat-label>
+      <input matInput formControlName="nickName" placeholder="example123">
+    </mat-form-field>
+    <mat-form-field class="email" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="example@mail.com" type="email">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password">
+    </mat-form-field>
+
+    <button mat mat-raised-button class="submit" type="submit">Create user</button>
+  </div>
+</form>
