@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { typedFormControl, typedFormGroup, TypedFormGroup } from 'ngx-forms-typed';
-import { RegisterUserIO } from 'src/app/core/model/register-user.model';
+import { typedFormArray, typedFormControl, typedFormGroup, TypedFormGroup } from 'ngx-forms-typed';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
+import { SystemDataFormIO } from './modal/system-data-form.modal';
+import { UserDataFormIO } from './modal/user-data-form.modal';
 
 @UntilDestroy()
 @Component({
@@ -13,19 +15,23 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  public registerForm!: TypedFormGroup<RegisterUserIO>;
+  public registerForm!: TypedFormGroup<RegisterUserFormIO>;
 
   constructor(
     private authService: AuthService,
   ) { 
     this.registerForm = typedFormGroup({
-      firstName: typedFormControl('', Validators.required),
-      lastName: typedFormControl('', Validators.required),
-      icon: typedFormControl(null, Validators.required),
-      nickName: typedFormControl('', Validators.required),
-      email: typedFormControl('', Validators.required),
-      password: typedFormControl('', Validators.required),
-    })
+      systemDataForm: typedFormGroup({
+        email: typedFormControl('', Validators.required),
+        nickName: typedFormControl('', Validators.required),
+        password: typedFormControl('', Validators.required),
+        icon: typedFormControl(null, Validators.required),
+      }) as TypedFormGroup<SystemDataFormIO>,
+      userDataForm: typedFormGroup({
+        firstName: typedFormControl('', Validators.required),
+        lastName: typedFormControl('', Validators.required),
+      })as TypedFormGroup<UserDataFormIO>
+    }) as TypedFormGroup<RegisterUserFormIO>;
   }
 
   public ngOnInit(): void {

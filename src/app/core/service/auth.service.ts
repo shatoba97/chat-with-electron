@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { LoginCredIO } from 'src/app/pages/login/login-page/model/login-creds.model';
+import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
 import { AuthResponseIO } from '../model/auth-response.model';
-import { RegisterUserIO } from '../model/register-user.model';
 import { User } from '../model/user.model';
 import { HttpClientBase } from './http-client.service';
 import { LocalStoreService } from './local-store.service';
@@ -39,7 +39,7 @@ export class AuthService {
    * Method for regist new user
    * @param user User data
    */
-  public registerUser(user: RegisterUserIO): Observable<boolean> {
+  public registerUser(user: RegisterUserFormIO): Observable<boolean> {
     return this.httpClient.post<any>('register-user', user)
   }
 
