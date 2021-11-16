@@ -1,6 +1,6 @@
 export interface SystemDataFormIO {
   icon: any;
   nickName: string;
-  email: string;
+  login: string;
   password: string;
 }

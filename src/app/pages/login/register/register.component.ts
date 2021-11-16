@@ -15,36 +15,36 @@ import { UserDataFormIO } from './modal/user-data-form.modal';
 })
 export class RegisterComponent implements OnInit {
 
-  public registerForm!: TypedFormGroup<RegisterUserFormIO>;
+  public registerFormData!: RegisterUserFormIO;
+  public systemDataForm: TypedFormGroup<SystemDataFormIO>;
+  public userDataForm: TypedFormGroup<UserDataFormIO>;
 
   constructor(
     private authService: AuthService,
-  ) { 
-    this.registerForm = typedFormGroup({
-      systemDataForm: typedFormGroup({
-        email: typedFormControl('', Validators.required),
-        nickName: typedFormControl('', Validators.required),
-        password: typedFormControl('', Validators.required),
-        icon: typedFormControl(null, Validators.required),
-      }) as TypedFormGroup<SystemDataFormIO>,
-      userDataForm: typedFormGroup({
-        firstName: typedFormControl('', Validators.required),
-        lastName: typedFormControl('', Validators.required),
-      })as TypedFormGroup<UserDataFormIO>
-    }) as TypedFormGroup<RegisterUserFormIO>;
+  ) {
+    this.systemDataForm = typedFormGroup({
+      login: typedFormControl('', Validators.required),
+      nickName: typedFormControl('', Validators.required),
+      password: typedFormControl('', Validators.required),
+      icon: typedFormControl(null),
+    }) as TypedFormGroup<SystemDataFormIO>;
+    this.userDataForm = typedFormGroup({
+      firstName: typedFormControl('', Validators.required),
+      lastName: typedFormControl('', Validators.required),
+    }) as TypedFormGroup<UserDataFormIO>
   }
 
   public ngOnInit(): void {
   }
 
   public onSubmit(): void {
-    if(!this.registerForm.valid){
+    if (!this.systemDataForm.valid || !this.userDataForm.valid) {
       return;
     }
-
-    this.authService.registerUser(this.registerForm.value).pipe(
+    this.registerFormData = Object.assign(this.systemDataForm.value, this.userDataForm.value)
+    this.authService.registerUser(this.registerFormData).pipe(
       untilDestroyed(this)
     )
-    .subscribe();
+      .subscribe();
   }
 }
