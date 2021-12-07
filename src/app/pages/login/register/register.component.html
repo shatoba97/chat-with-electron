@@ -38,16 +38,8 @@
         </form>
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
-            <button mat-button matStepperNextk type="button">Next</button>
+            <button [disabled]="!systemDataForm.valid || !userDataForm.valid" mat mat-raised-button class="submit" type="submit">Create user</button>
           </div>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPreviousk type="button">Back</button>
-          <button mat-button type="button" (click)="stepper.reset()">Reset</button>
-        </div>
       </mat-step>
     </mat-stepper> 
 
@@ -80,6 +72,5 @@
       <input matInput formControlName="password" type="password">
     </mat-form-field> -->
 
-    <button mat mat-raised-button class="submit" type="submit">Create user</button>
   </div>
 </form>

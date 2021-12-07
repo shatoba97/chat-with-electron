@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { typedFormArray, typedFormControl, typedFormGroup, TypedFormGroup } from 'ngx-forms-typed';
 import { AuthService } from 'src/app/core/service/auth.service';
@@ -21,6 +22,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) {
     this.systemDataForm = typedFormGroup({
       login: typedFormControl('', Validators.required),
@@ -45,6 +48,9 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(this.registerFormData).pipe(
       untilDestroyed(this)
     )
-      .subscribe();
+      .subscribe(
+        () => { this.router.navigate(['../../chat'], { relativeTo: this.route }) },
+        (error) => { }
+      );
   }
 }
