@@ -22,7 +22,7 @@
     </div>
     <div class="form-footer">
       <button mat-raised-button color="primary" class="login" type="submit" [disabled]="!loginForm.valid && !loginForm.touched">login</button>
-      <a mat-button href="" class="forget-creds">Forget password or login</a>
+      <a mat-button [routerLink]="['reg']" class="forget-creds">Forget password or login</a>
       <div class="login-with-social-networks"></div>
     </div>
   </div>

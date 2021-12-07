@@ -38,8 +38,7 @@ export class LoginPageComponent implements OnInit {
       take(1),
       untilDestroyed(this),
     ).subscribe(res => {
-      this.router.navigate(['chat'], { queryParams: { id: 1 } });
-      console.log(res);
+      this.router.navigate(['chat']);
     })
   }
 

@@ -1,0 +1,46 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <mat-stepper #stepper>
+      <mat-step [stepControl]="userDataForm">
+        <form [formGroup]="userDataForm">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field class="first-name" appearance="fill">
+            <mat-label>Your first name</mat-label>
+            <input matInput formControlName="firstName" placeholder="First name">
+          </mat-form-field>
+          <mat-form-field class="last-name" appearance="fill">
+            <mat-label>Your last name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Last name">
+          </mat-form-field>
+        </form>
+          <div>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+      </mat-step>
+      <mat-step [stepControl]="systemDataForm" label="Fill out your address">
+        <form [formGroup]="systemDataForm">
+          <div>
+            <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            <input hidden formControlName="icon" #fileInput type="file" id="file">
+          </div>
+          <mat-form-field class="nick-name" appearance="fill">
+            <mat-label>Your nick name</mat-label>
+            <input matInput formControlName="nickName" placeholder="example123">
+          </mat-form-field>
+          <mat-form-field class="email" appearance="fill">
+            <mat-label>Login</mat-label>
+            <input matInput formControlName="login">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password">
+          </mat-form-field>
+        </form>
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button [disabled]="!systemDataForm.valid || !userDataForm.valid" mat mat-raised-button class="submit" type="submit">Create user</button>
+          </div>
+      </mat-step>
+    </mat-stepper> 
+  </div>
+</form>

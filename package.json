@@ -24,6 +24,7 @@
     "@angular/router": "~12.2.0",
     "@ngneat/until-destroy": "^8.1.4",
     "angular-typesafe-reactive-forms-helper": "^2.0.2",
+    "ngx-forms-typed": "^1.1.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
