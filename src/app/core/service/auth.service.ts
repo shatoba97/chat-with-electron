@@ -1,8 +1,9 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { LoginCredIO } from 'src/app/pages/login/login-page/model/login-creds.model';
+import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
 import { AuthResponseIO } from '../model/auth-response.model';
 import { User } from '../model/user.model';
 import { HttpClientBase } from './http-client.service';
@@ -26,10 +27,23 @@ export class AuthService {
     };
 
     return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
-      tap(request => console.log(request)),
       switchMap(request => {
         this.localStoreService.token$.next(request.token);
         return this.getUser();
+      })
+    )
+  }
+
+  /**
+   * Method for regist new user
+   * @param user User data
+   */
+  public registerUser(user: RegisterUserFormIO): Observable<AuthResponseIO> {
+    return this.httpClient.post<AuthResponseIO>('register-user', user).pipe(
+      tap(({token}) => {
+        if (token) {
+          this.localStoreService.token$.next(token);
+        }
       })
     )
   }

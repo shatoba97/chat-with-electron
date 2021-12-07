@@ -5,7 +5,7 @@ import { AuthGuardService } from './core/guard/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'chat',
     pathMatch: 'full'
   },
   {
