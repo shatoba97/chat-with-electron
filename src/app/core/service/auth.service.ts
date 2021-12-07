@@ -5,7 +5,6 @@ import { switchMap, tap } from 'rxjs/operators';
 import { LoginCredIO } from 'src/app/pages/login/login-page/model/login-creds.model';
 import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
 import { AuthResponseIO } from '../model/auth-response.model';
-import { ResponseIO } from '../model/response.model';
 import { User } from '../model/user.model';
 import { HttpClientBase } from './http-client.service';
 import { LocalStoreService } from './local-store.service';
