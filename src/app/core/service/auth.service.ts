@@ -7,7 +7,7 @@ import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-
 import { AuthResponseIO } from '../model/auth-response.model';
 import { User } from '../model/user.model';
 import { HttpClientBase } from './http-client.service';
-import { LocalStoreService } from './local-store.service';
+import { LocalStorageService } from './local-store.service';
 
 @Injectable({
   providedIn: "root",
@@ -15,7 +15,7 @@ import { LocalStoreService } from './local-store.service';
 export class AuthService {
   constructor(
     private httpClient: HttpClientBase,
-    private localStoreService: LocalStoreService,
+    private localStoreService: LocalStorageService,
   ) { }
 
   public auth(creds: LoginCredIO): Observable<User> {

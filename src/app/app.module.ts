@@ -20,6 +20,7 @@ import { AuthGuardService } from './core/guard/auth-guard.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptorService, multi: true },
+    { provide: 'LocalStorage', useValue: window.localStorage },
     AuthGuardService,
   ],
   bootstrap: [AppComponent]
