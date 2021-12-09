@@ -1,0 +1,25 @@
+
+
+<mat-sidenav-container (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav>
+    <app-menu></app-menu>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="menuClick()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+    </mat-toolbar>
+
+    <app-chat-preview
+      *ngFor="let chat of (chatList$ | async)"
+      [chat]="chat"
+    ></app-chat-preview>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<div class="list-of-chat">
+  
+</div>
+<div class="selected-chat"></div>

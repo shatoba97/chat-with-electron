@@ -4,7 +4,8 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { FormBuilderTypeSafe } from 'angular-typesafe-reactive-forms-helper';
 import { MaterialModule } from './material.module';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     RouterModule,
     MatInputModule,
     MatStepperModule,
+    MatToolbarModule,
   ],
   exports: [
     FormsModule,
@@ -24,6 +26,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     RouterModule,
     MatInputModule,
     MatStepperModule,
+    MatToolbarModule,
   ],
   providers: [FormBuilderTypeSafe],
 })
