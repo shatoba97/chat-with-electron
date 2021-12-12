@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, interval, Observable, of } from 'rxjs';
+import { PreviewChatIO } from '@core/model/preview-chat.model';
+import { ChatService } from '@core/service/chat.service';
+import { catchError, concatMap, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat',
@@ -13,7 +16,6 @@ export class MainPageComponent implements OnInit {
 
   public chatList$ = new BehaviorSubject([])
   public user$ = new BehaviorSubject(null);
-  public dataPreview$ = new BehaviorSubject(null);
   public set searchValue(value: string) {
     this._searchValue = value;
   }
@@ -22,13 +24,25 @@ export class MainPageComponent implements OnInit {
     return this._searchValue;
   }
 
+  public dataPreview$!: Observable<PreviewChatIO[]>;
+
   private _searchValue!: string;
 
-  constructor() { }
+  constructor(
+    private chatService: ChatService,
+  ) { }
 
 
 
   public ngOnInit(): void {
+    this.dataPreview$ = interval(5000).pipe(
+      concatMap(() => this.chatService.getAllPreviewChats()),
+      catchError(error => {
+        console.log(error);
+        return of([]);
+      }),
+      startWith([])
+    );
   }
 
   public clearSearchValue(): void {
@@ -38,4 +52,6 @@ export class MainPageComponent implements OnInit {
   public menuClick(): void {
     this.sidenav.open()
   }
+
+
 }

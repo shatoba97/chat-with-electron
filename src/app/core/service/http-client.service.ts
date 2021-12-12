@@ -2,7 +2,7 @@ import { HttpClient, HttpResponse as HttpEvent, HttpResponse, HttpSentEvent } fr
 import { Injectable } from '@angular/core';
 import { MonoTypeOperatorFunction, Observable, OperatorFunction, Subscriber } from 'rxjs';
 import { map, tap } from 'rxjs/operators'
-import { environment } from 'src/environments/environment';
+import { environment } from '@env/environment';
 import { ResponseIO } from '../model/response.model';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class HttpClientBase {
 
   private mappingRequest<T>(): OperatorFunction<ResponseIO<T>, T> {
     return map((resp: ResponseIO<T>) => {
-      if(resp.error && Object.keys(resp.error).length) {
+      if (resp.error && Object.keys(resp.error).length) {
         throw resp.error;
       }
 

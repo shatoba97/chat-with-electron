@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@core/service/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { typedFormArray, typedFormControl, typedFormGroup, TypedFormGroup } from 'ngx-forms-typed';
-import { AuthService } from 'src/app/core/service/auth.service';
-import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
+import { RegisterUserFormIO } from './modal/register-user.model';
 import { SystemDataFormIO } from './modal/system-data-form.modal';
 import { UserDataFormIO } from './modal/user-data-form.modal';
 
@@ -50,7 +50,6 @@ export class RegisterComponent implements OnInit {
     )
       .subscribe(
         () => { this.router.navigate(['../../chat'], { relativeTo: this.route }) },
-        (error) => { }
       );
   }
 }
