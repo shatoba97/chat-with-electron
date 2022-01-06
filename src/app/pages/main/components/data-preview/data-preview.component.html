@@ -1,1 +1,7 @@
-<p>chat-preview works!</p>
+<div class="preview-container" *ngFor="let preview of dataPreview">
+  <img src="" alt="" class="chat-icon">
+  <div class="short-discription">
+    <p class="short-name">{{preview.chat_name}}</p>
+    <p class="short-text"></p>
+  </div>
+</div>
