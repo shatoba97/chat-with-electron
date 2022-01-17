@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { BehaviorSubject, interval, Observable, of } from 'rxjs';
-import { PreviewChatIO } from '@core/model/preview-chat.model';
-import { ChatService } from '@core/service/chat.service';
+import { BehaviorSubject, Observable, interval, of } from 'rxjs';
 import { catchError, concatMap, startWith } from 'rxjs/operators';
+
+import { ChatService } from '@core/service/chat.service';
+import { MatSidenav } from '@angular/material/sidenav';
+import { PreviewChatIO } from '@core/model/preview-chat.model';
 
 @Component({
   selector: 'app-chat',
@@ -36,11 +37,12 @@ export class MainPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.dataPreview$ = interval(5000).pipe(
-      concatMap(() => this.chatService.getAllPreviewChats()),
-      catchError(error => {
-        console.log(error);
-        return of([]);
-      }),
+      concatMap(() => this.chatService.getAllPreviewChats().pipe(
+        catchError(error => {
+          console.log(error);
+          return of([]);
+        })
+      )),
       startWith([])
     );
   }
