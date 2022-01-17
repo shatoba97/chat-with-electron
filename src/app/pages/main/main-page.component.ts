@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, interval, of } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { catchError, concatMap, startWith } from 'rxjs/operators';
 
 import { ChatService } from '@core/service/chat.service';
@@ -25,7 +25,14 @@ export class MainPageComponent implements OnInit {
     return this._searchValue;
   }
 
-  public dataPreview$!: Observable<PreviewChatIO[]>;
+  public dataPreview$: Observable<PreviewChatIO[]> = interval(5000).pipe(
+    concatMap(() => this.chatService.getAllPreviewChats()),
+    catchError(error => {
+      console.log(error);
+      return of([]);
+    }),
+    startWith([])
+  );
 
   private _searchValue!: string;
 

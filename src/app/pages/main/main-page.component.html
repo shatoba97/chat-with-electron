@@ -1,6 +1,7 @@
 
 
 <mat-sidenav-container (backdropClick)="sidenav.close()">
+  <!-- TODO Add Directive with mouse event listener for change width for mat-sidenav -->
   <mat-sidenav #sidenav class="menu">
     <app-menu></app-menu>
   </mat-sidenav>
@@ -21,7 +22,7 @@
       </mat-toolbar>
   
       <app-data-preview
-        [dataPreview]="(dataPreview$ | async) || []"
+        [dataPreview]="dataPreview$ | async"
       ></app-data-preview>
     </div>
   </mat-sidenav-content>

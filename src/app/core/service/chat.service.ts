@@ -1,8 +1,10 @@
+import { AllChatsResponse } from '@core/model/all-chats-response.model';
+import { HttpClientBase } from './http-client.service';
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PreviewChatIO } from '../model/preview-chat.model';
-import { HttpClientBase } from './http-client.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,9 @@ export class ChatService {
   }
 
   public getAllPreviewChats(): Observable<PreviewChatIO[]> {
-    return this.httpClient.get<PreviewChatIO[]>('chats');
+    return this.httpClient.get<AllChatsResponse>('chats').pipe(
+      map(res => res.chats),
+      // map(res=> mapDto<T>(res))
+    );
   }
 }

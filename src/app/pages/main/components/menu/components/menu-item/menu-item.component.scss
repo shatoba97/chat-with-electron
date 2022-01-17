@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+
+  button {
+    width: 100%;
+
+    .label {
+      margin: 0;
+      width: fit-content;
+    }
+  }
+}
