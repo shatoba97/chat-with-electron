@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ChatService } from '@core/service/chat.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { ChatService } from 'src/app/core/service/chat.service';
 import { CreateChatDialogComponent } from './components/create-chat-dialog/create-chat-dialog.component';
 import { MenuItemIO } from './interface/menu-item.interface';
 
@@ -13,18 +13,15 @@ import { MenuItemIO } from './interface/menu-item.interface';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
-
-
+export class MenuComponent {
   public menuItems: MenuItemIO[] = [
     this.createChatItem(),
   ]
 
-  constructor(private dialog: MatDialog,
-    private chatService: ChatService) { }
-
-  public ngOnInit(): void {
-  }
+  constructor(
+    private dialog: MatDialog,
+    private chatService: ChatService
+  ) { }
 
   private createChatItem(): MenuItemIO {
     return {

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/service/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormBuilderTypeSafe, FormGroupTypeSafe } from 'angular-typesafe-reactive-forms-helper';
 import { take } from 'rxjs/operators';
-import { AuthService } from 'src/app/core/service/auth.service';
 import { LoginCredIO } from './model/login-creds.model';
 
 @UntilDestroy()

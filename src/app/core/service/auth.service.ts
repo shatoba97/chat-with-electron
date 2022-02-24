@@ -1,9 +1,9 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginCredIO } from '@pages/login/login-page/model/login-creds.model';
+import { RegisterUserFormIO } from '@pages/login/register/modal/register-user.model';
 import { Observable } from 'rxjs';
 import { mapTo, switchMap, tap } from 'rxjs/operators';
-import { LoginCredIO } from 'src/app/pages/login/login-page/model/login-creds.model';
-import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
 import { AuthResponseIO } from '../model/auth-response.model';
 import { User } from '../model/user.model';
 import { HttpClientBase } from './http-client.service';
