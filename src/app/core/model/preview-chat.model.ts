@@ -1,5 +1,5 @@
 export interface PreviewChatIO {
-  chatName: string;
+  chat_name: string;
   icon?: Blob;
   messageCount?: number;
 }

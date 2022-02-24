@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '@core/service/auth.service';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormBuilderTypeSafe, FormGroupTypeSafe } from 'angular-typesafe-reactive-forms-helper';
-import { take } from 'rxjs/operators';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+import { AuthService } from '@core/service/auth.service';
+import { LocalStorageService } from '@core/service/local-store.service';
 import { LoginCredIO } from './model/login-creds.model';
+import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
+import { take } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -20,12 +22,14 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private fb: FormBuilderTypeSafe,
     private authService: AuthService,
+    private localStoreService: LocalStorageService,
     private router: Router,
   ) {
     this.loginForm = this.fb.group<LoginCredIO>({
       login: this.fb.control('', Validators.required),
       password: this.fb.control('', Validators.required)
-    })
+    });
+    this.localStoreService.token$.next('');
   }
 
   public submitLogin(): void {
