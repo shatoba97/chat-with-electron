@@ -11,7 +11,7 @@ import { PreviewChatIO } from '@core/model/preview-chat.model';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
   @ViewChild(MatSidenav)
   public sidenav!: MatSidenav;
 
@@ -40,19 +40,6 @@ export class MainPageComponent implements OnInit {
     private chatService: ChatService,
   ) { }
 
-
-
-  public ngOnInit(): void {
-    this.dataPreview$ = interval(5000).pipe(
-      concatMap(() => this.chatService.getAllPreviewChats().pipe(
-        catchError(error => {
-          console.log(error);
-          return of([]);
-        })
-      )),
-      startWith([])
-    );
-  }
 
   public clearSearchValue(): void {
     this.searchValue = '';
