@@ -6,7 +6,7 @@ import { HttpClientBase } from './http-client.service';
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PreviewChatIO } from '../model/preview-chat.model';
-import { chats } from '@core/mock-data/chat.mock';
+import { chats } from '@core/mock-data/chats.mock';
 
 @Injectable({
   providedIn: 'root'
