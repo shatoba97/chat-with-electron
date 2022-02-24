@@ -6,6 +6,7 @@ import { FormBuilderTypeSafe } from 'angular-typesafe-reactive-forms-helper';
 import { MaterialModule } from './material.module';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatStepperModule,
     MatToolbarModule,
+    MatDialogModule,
   ],
   exports: [
     FormsModule,
@@ -27,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatStepperModule,
     MatToolbarModule,
+    MatDialogModule,
   ],
   providers: [FormBuilderTypeSafe],
 })

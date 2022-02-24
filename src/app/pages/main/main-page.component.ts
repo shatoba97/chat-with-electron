@@ -12,9 +12,27 @@ export class MainPageComponent implements OnInit {
   public sidenav!: MatSidenav;
 
   public chatList$ = new BehaviorSubject([])
+  public user$ = new BehaviorSubject(null);
+  public dataPreview$ = new BehaviorSubject(null);
+  public set searchValue(value: string) {
+    this._searchValue = value;
+  }
+
+  public get searchValue(): string {
+    return this._searchValue;
+  }
+
+  private _searchValue!: string;
+
   constructor() { }
 
-  ngOnInit(): void {
+
+
+  public ngOnInit(): void {
+  }
+
+  public clearSearchValue(): void {
+    this.searchValue = '';
   }
 
   public menuClick(): void {
