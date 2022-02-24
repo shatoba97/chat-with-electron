@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat.component';
 import { ChatPreviewComponent } from './chat-preview/chat-preview.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -11,7 +12,8 @@ import { ChatPreviewComponent } from './chat-preview/chat-preview.component';
     ChatPreviewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class ChatModule { }
