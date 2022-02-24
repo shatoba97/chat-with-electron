@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
-import { LocalStoreService } from './local-store.service';
+import { LocalStorageService } from './local-store.service';
 
 @UntilDestroy()
 @Injectable()
 export class BaseInterceptorService implements HttpInterceptor {
-  constructor(private localStoreService: LocalStoreService) {}
+  constructor(private localStoreService: LocalStorageService) {}
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.localStoreService.token$.pipe(
