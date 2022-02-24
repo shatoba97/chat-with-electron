@@ -17,6 +17,7 @@ import { mergeMap } from 'rxjs/operators';
 export class MenuComponent {
   public menuItems: MenuItemIO[] = [
     this.createChatItem(),
+    this.createContacts(),
   ];
 
   constructor(
@@ -27,6 +28,16 @@ export class MenuComponent {
   private createChatItem(): MenuItemIO {
     return {
       label: 'Create chat',
+      clickEvent: () => {
+        const dialogOpend = this.dialog.open(CreateChatDialogComponent);
+        dialogOpend.afterClosed().pipe(mergeMap((name) => this.createChat(name)), untilDestroyed(this)).subscribe()
+      }
+    };
+  }
+
+  private createContacts(): MenuItemIO {
+    return {
+      label: 'Create contacts',
       clickEvent: () => {
         const dialogOpend = this.dialog.open(CreateChatDialogComponent);
         dialogOpend.afterClosed().pipe(mergeMap((name) => this.createChat(name)), untilDestroyed(this)).subscribe()
