@@ -24,6 +24,7 @@
     "@angular/router": "~12.2.0",
     "@ngneat/until-destroy": "^8.1.4",
     "angular-typesafe-reactive-forms-helper": "^2.0.2",
+    "ngx-drag-resize": "0.0.6",
     "ngx-forms-typed": "^1.1.6",
     "prettier": "^2.5.1",
     "rxjs": "~6.6.0",

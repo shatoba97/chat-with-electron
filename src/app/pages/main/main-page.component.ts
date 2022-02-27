@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, interval, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, interval, of } from 'rxjs';
 import { catchError, concatMap, startWith } from 'rxjs/operators';
 
 import { ChatService } from '@core/service/chat.service';
@@ -15,6 +15,7 @@ export class MainPageComponent {
   @ViewChild(MatSidenav)
   public sidenav!: MatSidenav;
 
+  public showChat$ = new BehaviorSubject<PreviewChatIO | null>(null);
   public chatList$ = new BehaviorSubject([])
   public user$ = new BehaviorSubject(null);
   public set searchValue(value: string) {
@@ -47,6 +48,10 @@ export class MainPageComponent {
 
   public menuClick(): void {
     this.sidenav.open()
+  }
+
+  public showChat(chat: PreviewChatIO): void {
+    this.showChat$.next(chat)
   }
 
 

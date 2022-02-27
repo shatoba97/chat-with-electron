@@ -30,7 +30,7 @@ export class MenuComponent {
       label: 'Create chat',
       clickEvent: () => {
         const dialogOpend = this.dialog.open(CreateChatDialogComponent);
-        dialogOpend.afterClosed().pipe(mergeMap((name) => this.createChat(name)), untilDestroyed(this)).subscribe()
+        dialogOpend.afterClosed().pipe(mergeMap((name) => name && this.createChat(name)), untilDestroyed(this)).subscribe()
       }
     };
   }
@@ -40,7 +40,7 @@ export class MenuComponent {
       label: 'Create contacts',
       clickEvent: () => {
         const dialogOpend = this.dialog.open(CreateChatDialogComponent);
-        dialogOpend.afterClosed().pipe(mergeMap((name) => this.createChat(name)), untilDestroyed(this)).subscribe()
+        dialogOpend.afterClosed().pipe(mergeMap((name) => name && this.createChat(name)), untilDestroyed(this)).subscribe()
       }
     };
   }

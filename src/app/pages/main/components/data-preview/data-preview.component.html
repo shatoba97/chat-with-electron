@@ -1,9 +1,14 @@
-<ng-template ngFor ngFor let-preview [ngForOf]="dataPreview">
-  <button mat-raised-button class="chat">
-    <img [src]="getImage(preview)" alt="" class="chat-icon" />
-    <div class="short-discription">
-      <p class="short-name">{{ preview.chat_name }}</p>
-      <p class="short-text">{{ preview.last_message }}</p>
-    </div>
-  </button>
-</ng-template>
+<div ngxResize class="chat-container">
+  <ng-template ngFor ngFor let-preview [ngForOf]="dataPreview">
+    <button mat-raised-button class="chat-panel-item" (click)="selectChat(preview)">
+      <div class="chat-preview">
+        <img [src]="getImage(preview)" alt="" class="chat-icon" />
+        <div class="short-discription">
+          <p class="short-name">{{ preview.chat_name }}</p>
+          <p class="short-text">{{ preview.last_message }}</p>
+        </div>
+      </div>
+    </button>
+  </ng-template>
+  <div [ngxResizeHandle]="resizeFront"></div>
+</div>

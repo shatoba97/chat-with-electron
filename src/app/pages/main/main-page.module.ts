@@ -10,6 +10,7 @@ import {
   MenuItemComponent
 } from './components/menu/components/menu-item/menu-item.component';
 import { NgModule } from '@angular/core';
+import { NgxDragResizeModule } from 'ngx-drag-resize';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SharedModule } from '@shared/shared.module';
     CommonModule,
     SharedModule,
     MainPageRoutingModule,
+    NgxDragResizeModule,
   ],
   exports: [
     MainPageComponent,

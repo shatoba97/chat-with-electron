@@ -23,7 +23,10 @@
   
       <app-data-preview
         [dataPreview]="dataPreview$ | async"
+        (onSelectChat$)="showChat($event)"
       ></app-data-preview>
+
+      <!-- TODO Make component for display body of chat -->
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
