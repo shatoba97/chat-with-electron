@@ -1,13 +1,14 @@
+import { Observable, of } from 'rxjs';
+import { mapTo, switchMap, tap } from 'rxjs/operators';
+
+import { AuthResponseIO } from '../model/auth-response.model';
+import { HttpClientBase } from './http-client.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { LoginCredIO } from 'src/app/pages/login/login-page/model/login-creds.model';
-import { RegisterUserFormIO } from 'src/app/pages/login/register/modal/register-user.model';
-import { AuthResponseIO } from '../model/auth-response.model';
+import { LocalStorageService } from './local-store.service';
+import { LoginCredIO } from '@pages/login/login-page/model/login-creds.model';
+import { RegisterUserFormIO } from '@pages/login/register/modal/register-user.model';
 import { User } from '../model/user.model';
-import { HttpClientBase } from './http-client.service';
-import { LocalStoreService } from './local-store.service';
 
 @Injectable({
   providedIn: "root",
@@ -15,22 +16,22 @@ import { LocalStoreService } from './local-store.service';
 export class AuthService {
   constructor(
     private httpClient: HttpClientBase,
-    private localStoreService: LocalStoreService,
+    private localStoreService: LocalStorageService,
   ) { }
 
-  public auth(creds: LoginCredIO): Observable<User> {
+  public auth(creds: LoginCredIO): Observable<void> {
     const authHeader = new HttpHeaders()
       .set("Authorization", "Basic " + btoa(`${creds.login}:${creds.password}`));
 
     const httpOptions = {
       headers: authHeader
     };
-
+    return of();
     return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
-      switchMap(request => {
+      tap(request => {
         this.localStoreService.token$.next(request.token);
-        return this.getUser();
-      })
+      }),
+      mapTo(void 0),
     )
   }
 
@@ -40,7 +41,7 @@ export class AuthService {
    */
   public registerUser(user: RegisterUserFormIO): Observable<AuthResponseIO> {
     return this.httpClient.post<AuthResponseIO>('register-user', user).pipe(
-      tap(({token}) => {
+      tap(({ token }) => {
         if (token) {
           this.localStoreService.token$.next(token);
         }
@@ -48,7 +49,11 @@ export class AuthService {
     )
   }
 
-  private getUser(): Observable<User> {
+  /**
+   * Get info about current user
+   * @returns User data
+   */
+  public getUser(): Observable<User> {
     return this.httpClient.get('user');
   }
 }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChatPreviewComponent } from './chat-preview.component';
+import { DataPreviewComponent } from './data-preview.component';
 
 describe('ChatPreviewComponent', () => {
-  let component: ChatPreviewComponent;
-  let fixture: ComponentFixture<ChatPreviewComponent>;
+  let component: DataPreviewComponent;
+  let fixture: ComponentFixture<DataPreviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChatPreviewComponent ]
+      declarations: [ DataPreviewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChatPreviewComponent);
+    fixture = TestBed.createComponent(DataPreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

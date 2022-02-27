@@ -1,0 +1,36 @@
+
+
+<mat-sidenav-container (backdropClick)="sidenav.close()">
+  <!-- TODO Add Directive with mouse event listener for change width for mat-sidenav -->
+  <mat-sidenav #sidenav class="menu">
+    <app-menu></app-menu>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <div class="left-part-container">
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="menuClick()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-form-field class="search" appearance="fill">
+          <mat-label>Search</mat-label>
+          <input matInput type="search" [(ngModel)]="searchValue">
+          <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearchValue()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-toolbar>
+  
+      <app-data-preview
+        [dataPreview]="dataPreview$ | async"
+        (onSelectChat$)="showChat($event)"
+      ></app-data-preview>
+
+      <!-- TODO Make component for display body of chat -->
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<div class="list-of-chat">
+  
+</div>
+<div class="selected-chat"></div>
