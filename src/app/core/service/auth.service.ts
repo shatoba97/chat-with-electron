@@ -1,13 +1,14 @@
+import { Observable, of } from 'rxjs';
+import { mapTo, switchMap, tap } from 'rxjs/operators';
+
+import { AuthResponseIO } from '../model/auth-response.model';
+import { HttpClientBase } from './http-client.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-store.service';
 import { LoginCredIO } from '@pages/login/login-page/model/login-creds.model';
 import { RegisterUserFormIO } from '@pages/login/register/modal/register-user.model';
-import { Observable } from 'rxjs';
-import { mapTo, switchMap, tap } from 'rxjs/operators';
-import { AuthResponseIO } from '../model/auth-response.model';
 import { User } from '../model/user.model';
-import { HttpClientBase } from './http-client.service';
-import { LocalStorageService } from './local-store.service';
 
 @Injectable({
   providedIn: "root",
@@ -25,7 +26,7 @@ export class AuthService {
     const httpOptions = {
       headers: authHeader
     };
-
+    return of();
     return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
       tap(request => {
         this.localStoreService.token$.next(request.token);

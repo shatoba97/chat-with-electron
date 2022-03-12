@@ -1,12 +1,18 @@
 FROM node:14.15.0
 
-WORKDIR /app
+WORKDIR /front-app
 
-COPY package.json .
-COPY package-lock.json .
+COPY package-lock.json /front-app/
+COPY package.json /front-app/
+
 COPY . .
 
 RUN npm ci
 
+RUN npm run build
+
+FROM nginx:latest
+
+COPY --from=0 /front-app/dist/telegram /usr/share/nginx/html
+
 EXPOSE 4200
-CMD npm run start:host
