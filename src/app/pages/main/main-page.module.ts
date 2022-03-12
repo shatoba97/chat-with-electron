@@ -1,3 +1,4 @@
+import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { CommonModule } from '@angular/common';
 import {
   CreateChatDialogComponent
@@ -19,7 +20,8 @@ import { SharedModule } from '@shared/shared.module';
     DataPreviewComponent,
     MenuComponent,
     MenuItemComponent,
-    CreateChatDialogComponent
+    CreateChatDialogComponent,
+    ChatBodyComponent,
   ],
   imports: [
     CommonModule,

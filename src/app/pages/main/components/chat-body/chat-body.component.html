@@ -1,0 +1,9 @@
+<ng-template ngFor let-message [ngForOf]="messages">
+  <div>
+    <img src="" alt="">
+    <div class="body">
+      <span class="message">{{message.text}}</span>
+      <span class="time">{{message.time}}</span>
+    </div>
+  </div>
+</ng-template>

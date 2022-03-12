@@ -26,7 +26,9 @@ export class AuthService {
     const httpOptions = {
       headers: authHeader
     };
-    return of();
+    this.localStoreService.token$.next('request.token');
+
+    return of(void 0);
     return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
       tap(request => {
         this.localStoreService.token$.next(request.token);

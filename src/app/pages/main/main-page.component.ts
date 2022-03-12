@@ -2,6 +2,7 @@ import { BehaviorSubject, Observable, interval, of } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
 import { catchError, concatMap, startWith } from 'rxjs/operators';
 
+import { ChatIO } from '@core/model/chat.model';
 import { ChatService } from '@core/service/chat.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { PreviewChatIO } from '@core/model/preview-chat.model';
@@ -14,6 +15,7 @@ import { PreviewChatIO } from '@core/model/preview-chat.model';
 export class MainPageComponent {
   @ViewChild(MatSidenav)
   public sidenav!: MatSidenav;
+  public selectedChat$ = new BehaviorSubject<ChatIO[]>([])
 
   public showChat$ = new BehaviorSubject<PreviewChatIO | null>(null);
   public chatList$ = new BehaviorSubject([])
