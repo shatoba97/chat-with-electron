@@ -26,6 +26,7 @@
     "angular-typesafe-reactive-forms-helper": "^2.0.2",
     "ngx-drag-resize": "0.0.6",
     "ngx-forms-typed": "^1.1.6",
+    "ngx-socket-io": "^4.2.0",
     "prettier": "^2.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
