@@ -41,7 +41,7 @@ export class LoginPageComponent implements OnInit {
     this.authService.auth(form).pipe(
       take(1),
       untilDestroyed(this),
-    ).subscribe(res => {
+    ).subscribe(() => {
       this.router.navigate(['chat']);
     })
   }

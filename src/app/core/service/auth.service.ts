@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 import { mapTo, switchMap, tap } from 'rxjs/operators';
 
-import { AuthResponseIO } from '../model/auth-response.model';
+import { AuthResponseIO } from '@core/interface/auth-response.model';
 import { HttpClientBase } from './http-client.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -26,8 +26,8 @@ export class AuthService {
     const httpOptions = {
       headers: authHeader
     };
-    return of();
-    return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
+    // return this.httpClient.post<AuthResponseIO>('auth', null, httpOptions).pipe(
+      return of({token: 'qwe'}).pipe(
       tap(request => {
         this.localStoreService.token$.next(request.token);
       }),

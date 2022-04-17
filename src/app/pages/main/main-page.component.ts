@@ -4,10 +4,10 @@ import { catchError, concatMap, startWith } from 'rxjs/operators';
 
 import { ChatService } from '@core/service/chat.service';
 import { MatSidenav } from '@angular/material/sidenav';
-import { PreviewChatIO } from '@core/model/preview-chat.model';
+import { PreviewChatIO } from '@core/interface/preview-chat.model';
 
 @Component({
-  selector: 'app-chat',
+  selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
@@ -39,7 +39,10 @@ export class MainPageComponent {
 
   constructor(
     private chatService: ChatService,
-  ) { }
+  ) {
+    console.log('MainPageComponent start');
+
+   }
 
 
   public clearSearchValue(): void {

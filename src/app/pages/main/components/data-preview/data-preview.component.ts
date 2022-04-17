@@ -9,7 +9,7 @@ import {
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxResizeHandleType } from 'ngx-drag-resize';
-import { PreviewChatIO } from '@core/model/preview-chat.model';
+import { PreviewChatIO } from '@core/interface/preview-chat.model';
 import { Subject } from 'rxjs';
 
 @Component({

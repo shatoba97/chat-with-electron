@@ -20,13 +20,17 @@
           </button>
         </mat-form-field>
       </mat-toolbar>
-  
+      <!-- TODO Make preview with pagination when user scroll down-->
       <app-data-preview
         [dataPreview]="dataPreview$ | async"
         (onSelectChat$)="showChat($event)"
       ></app-data-preview>
 
       <!-- TODO Make component for display body of chat -->
+      <app-chat
+        [chatData]="showChat$ | async"
+      >
+      </app-chat>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

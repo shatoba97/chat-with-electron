@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     MatStepperModule,
     MatToolbarModule,
     MatDialogModule,
+    ScrollingModule,
   ],
   exports: [
     FormsModule,
@@ -31,6 +33,7 @@ import { RouterModule } from '@angular/router';
     MatStepperModule,
     MatToolbarModule,
     MatDialogModule,
+    ScrollingModule,
   ],
   providers: [FormBuilderTypeSafe],
 })
