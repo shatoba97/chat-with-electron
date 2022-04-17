@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, interval, of } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
 import { catchError, concatMap, startWith } from 'rxjs/operators';
 
 import { ChatService } from '@core/service/chat.service';
@@ -39,10 +39,7 @@ export class MainPageComponent {
 
   constructor(
     private chatService: ChatService,
-  ) {
-    console.log('MainPageComponent start');
-
-   }
+  ) { }
 
 
   public clearSearchValue(): void {

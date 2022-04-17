@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { LocalStorageIO } from '@core/interface/local-storage.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
-import { filter, skip, switchMap, take, takeUntil, tap } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { User } from '../model/user.model';
 import { AuthService } from './auth.service';
 
