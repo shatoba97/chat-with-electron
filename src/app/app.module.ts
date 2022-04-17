@@ -11,6 +11,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LocalStorageService } from '@core/service/local-store.service';
 import { NgxDragResizeModule } from 'ngx-drag-resize';
 import { Router } from '@angular/router';
+import { SocketIoModule } from 'ngx-socket-io';
+import { socketConfig } from '@core/constant/socket.config';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { Router } from '@angular/router';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SocketIoModule.forRoot(socketConfig),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptorService, multi: true },

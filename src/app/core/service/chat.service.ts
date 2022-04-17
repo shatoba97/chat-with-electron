@@ -33,8 +33,13 @@ export class ChatService {
 
   public getChatInfo(id: number): Observable<ChatIO> {
     return of(chat);
+    const a = new Observable(o => {
+      return 
+    })
     // return this.httpClient.get<ChatIO>('chats');
   }
 
-  // public getChatMessage
+  public chatConnect(id: number) {
+    
+  }
 }
